@@ -129,7 +129,7 @@
 
         /* GENERIC CONTENT */
         .content {
-            padding: 60px 100px;
+            padding: 40px 60px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -139,7 +139,7 @@
 
         /* GRID SYSTEMS */
         .grid-2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; height: 100%; align-items: center; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 20px; }
 
         /* PROBLEM / DATA SLIDE */
         .stat-card {
@@ -168,22 +168,26 @@
 
         /* SOLUTION TILES */
         .doa-tile {
-            padding: 40px;
+            padding: 25px 20px;
             border-radius: 24px;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        .doa-tile:hover { transform: translateY(-10px); }
+        .doa-tile:hover { transform: translateY(-10px); border-color: var(--primary); }
         .doa-tile .icon { 
-            width: 80px; height: 80px; 
+            width: 60px; height: 60px; 
             background: var(--secondary); 
             color: var(--primary);
-            border-radius: 20px;
+            border-radius: 15px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 40px; margin-bottom: 25px;
+            font-size: 28px; margin-bottom: 20px;
         }
-        .doa-tile h3 { font-size: 32px; margin-bottom: 15px; color: var(--secondary); }
+        .doa-tile h3 { font-size: 22px; margin-bottom: 12px; color: var(--secondary); line-height: 1.2; }
+        .doa-tile p { font-size: 14px; color: #64748b; line-height: 1.4; }
 
         /* MOCKUP AREA */
         .mockup-container {
@@ -191,11 +195,9 @@
             border-radius: 24px;
             height: 400px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            color: #64748b;
-            border: 2px dashed #cbd5e1;
             position: relative;
         }
 
@@ -355,39 +357,43 @@
             </div>
         </div>
 
-<div class="slide" id="slide-4">
-    <div class="content">
-        <h2 class="slide-title" id="s4-t">Módulos <span>GreenLoop</span></h2>
-        
-        <div class="grid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-            
-            <div class="doa-tile">
-                <div class="icon"><i class="fa-solid fa-id-card"></i></div>
-                <h3 class="doa-h">Carné Sostenible</h3>
-                <p class="doa-p">Perfil personal con registro de acciones, nivel de impacto y badges por logros ambientales.</p>
-            </div>
+        <div class="slide" id="slide-4">
+            <div class="content">
+                <h2 class="slide-title" id="s4-t">Módulos <span>GreenLoop</span></h2>
+                
+                <div class="grid-5">
+                    <div class="doa-tile">
+                        <div class="icon"><i class="fa-solid fa-id-card"></i></div>
+                        <h3 class="doa-h">Carné Sostenible</h3>
+                        <p class="doa-p">Perfil personal con registro de acciones, nivel de impacto y badges por logros ambientales.</p>
+                    </div>
 
-            <div class="doa-tile">
-                <div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
-                <h3 class="doa-h">Eco-Actividades</h3>
-                <p class="doa-p">Calendario de talleres y charlas. Registro por QR que otorga eco-créditos instantáneos.</p>
-            </div>
+                    <div class="doa-tile">
+                        <div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3 class="doa-h">Eco-Actividades</h3>
+                        <p class="doa-p">Calendario de talleres y charlas. Registro por QR que otorga eco-créditos instantáneos.</p>
+                    </div>
 
-            <div class="doa-tile">
-                <div class="icon"><i class="fa-solid fa-map-location-dot"></i></div>
-                <h3 class="doa-h">Mapa 360</h3>
-                <p class="doa-p">Guía de comercios locales, tiendas a granel y puntos de economía circular en la ciudad.</p>
-            </div>
+                    <div class="doa-tile">
+                        <div class="icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3 class="doa-h">Mapa 360</h3>
+                        <p class="doa-p">Guía de comercios locales, tiendas a granel y puntos de economía circular en la ciudad.</p>
+                    </div>
 
-            <div class="doa-tile">
-                <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
-                <h3 class="doa-h">Tips Sostenibles</h3>
-                <p class="doa-p">Pequeñas ideas, gran impacto. Aprende hábitos diarios con datos reales sobre el ahorro.</p>
-            </div>
+                    <div class="doa-tile">
+                        <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h3 class="doa-h">Tips Sostenibles</h3>
+                        <p class="doa-p">Pequeñas ideas, gran impacto. Aprende hábitos diarios con datos reales sobre el ahorro.</p>
+                    </div>
 
+                    <div class="doa-tile">
+                        <div class="icon"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3 class="doa-h">Comunidad</h3>
+                        <p class="doa-p">Espacio colaborativo: car-sharing, marketplace de intercambio y red de apoyo estudiantil.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
         <div class="slide" id="slide-5">
             <div class="content">
@@ -492,8 +498,14 @@
                 s3_h3: "Mucho más que reciclar.",
                 s3_p: "Una plataforma que centraliza la <strong>vida sostenible</strong> del campus: desde el reciclaje hasta el comercio local.",
                 s4_t: "Módulos <span>GreenLoop</span>",
-                doa_h: ["Carné Sostenible", "Eco-Actividades", "Mapa 360", "Tips Sostenibles"],
-                doa_p: ["Perfil con impacto real y logros ambientales.", "Talleres y charlas con check-in QR.", "Guía de comercio local y puntos circulares.", "Pequeñas ideas, gran impacto con datos reales."],
+                doa_h: ["Carné Sostenible", "Eco-Actividades", "Mapa 360", "Tips Sostenibles", "Comunidad"],
+                doa_p: [
+                    "Perfil con impacto real y logros ambientales.", 
+                    "Talleres y charlas con check-in QR.", 
+                    "Guía de comercio local y puntos circulares.", 
+                    "Pequeñas ideas, gran impacto con datos reales.",
+                    "Car-sharing, marketplace y apoyo estudiantil."
+                ],
                 s5_t: "Impacto <span>Institucional</span>",
                 s5_list: [
                     '<li><i class="fa-solid fa-check-double"></i> Cumplimiento ODS 12 y 13.</li>',
@@ -532,8 +544,14 @@
                 s3_h3: "More than just recycling.",
                 s3_p: "A platform that centralizes <strong>sustainable life</strong> on campus: from recycling to local commerce.",
                 s4_t: "<span>GreenLoop</span> Modules",
-                doa_h: ["Sust. ID Card", "Eco-Activities", "360 Map", "Sustainable Tips"],
-                doa_p: ["Profile with real impact and green badges.", "Workshops and talks with QR check-in.", "Local commerce and circular economy guide.", "Small ideas, big impact with real-world data."],
+                doa_h: ["Sust. ID Card", "Eco-Activities", "360 Map", "Sustainable Tips", "Community"],
+                doa_p: [
+                    "Profile with real impact and green badges.", 
+                    "Workshops and talks with QR check-in.", 
+                    "Local commerce and circular economy guide.", 
+                    "Small ideas, big impact with real-world data.",
+                    "Car-sharing, marketplace and student support."
+                ],
                 s5_t: "Institutional <span>Impact</span>",
                 s5_list: [
                     '<li><i class="fa-solid fa-check-double"></i> SDG 12 & 13 Compliance.</li>',
@@ -553,10 +571,7 @@
         };
 
         function toggleLanguage() {
-            // Requirement: Go to first page
             currentSlide = 0;
-            
-            // Switch Language
             currentLang = currentLang === 'ES' ? 'EN' : 'ES';
             const t = translations[currentLang];
             langBtn.innerText = t.btn;
@@ -612,7 +627,6 @@
             document.getElementById('s8-t').innerHTML = t.s8_t;
             document.getElementById('s8-p').innerText = t.s8_p;
 
-            // Apply slide update to show page 1
             updateSlide();
         }
 
@@ -621,7 +635,6 @@
             progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
             counter.innerText = `${currentSlide + 1} / ${totalSlides}`;
             const activeSlide = slides[currentSlide];
-            // Adjust counter color based on background
             counter.style.color = (activeSlide.classList.contains('cover') || activeSlide.id === 'slide-3') ? 'rgba(255, 255, 255, 0.5)' : 'rgba(15, 23, 42, 0.3)';
         }
 
