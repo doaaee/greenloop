@@ -16,6 +16,10 @@
             --text-light: #F8FAFC;
             --white: #FFFFFF;
             --gradient: linear-gradient(135deg, #00FF88 0%, #D4FF00 100%);
+            /* Nuevo color verde suave para las descripciones */
+            --green-light: #F1FFF8; 
+            /* Borde verde suave */
+            --green-border: #98FFD1;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -204,19 +208,45 @@
         /* LISTS */
         .impact-list { list-style: none; }
         .impact-list li {
-            font-size: 28px;
-            margin-bottom: 25px;
+            font-size: 24px;
+            margin-bottom: 20px;
             display: flex;
             align-items: flex-start;
             gap: 20px;
         }
-        .impact-list i { color: var(--primary); margin-top: 8px; font-size: 32px; }
+        .impact-list i { color: var(--primary); margin-top: 5px; font-size: 28px; }
 
         /* COMPARISON */
-        .comp-table { width: 100%; border-collapse: separate; border-spacing: 0 15px; }
+        .comp-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
         .comp-table td { padding: 25px; background: #f1f5f9; font-size: 22px; }
-        .comp-table td:first-child { border-radius: 16px 0 0 16px; font-weight: 700; width: 40%; }
-        .comp-table td:last-child { border-radius: 0 16px 16px 0; background: #00ff8820; color: #064e3b; border-left: 4px solid var(--primary); }
+        .comp-table td:first-child { border-radius: 16px 0 0 16px; font-weight: 700; width: 35%; }
+        .comp-table td:last-child { border-radius: 0 16px 16px 0; }
+        
+        /* ESTILOS PARA LAS FILAS CON EXPLICACIÓN EN VERDE SUAVE */
+        .row-green-desc td:first-child { 
+            /* Fondo normal para el título */
+            background: #f1f5f9; 
+            position: relative;
+        }
+        /* La franja vertical a la izquierda del título */
+        .row-green-desc td:first-child::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px; /* Ancho de la franja */
+            background: var(--green-border); /* Color de la franja */
+            border-radius: 16px 0 0 16px;
+        }
+
+        .row-green-desc td:last-child { 
+            /* Fondo verde suave solo para la descripción */
+            background: var(--green-light) !important; 
+            color: #1e293b; /* Color de texto oscuro para legibilidad */
+        }
+
+        /* HIGHLIGHT GREENLOOP ROW (mantenemos este estilo como el más destacado) */
+        .row-greenloop td:first-child { background: var(--secondary) !important; color: var(--primary) !important; font-size: 26px; text-transform: uppercase; letter-spacing: 1px; }
+        .row-greenloop td:last-child { background: #00ff8820 !important; color: #064e3b !important; border-left: 6px solid var(--primary) !important; font-weight: 600; font-size: 24px; }
 
         /* NAVIGATION CONTROLS */
         .controls {
@@ -277,7 +307,7 @@
 
     <button id="langBtn" onclick="toggleLanguage()">EN</button>
     <div class="progress-bar" id="progress"></div>
-    <div class="slide-counter" id="counter">1 / 9</div>
+    <div class="slide-counter" id="counter">1 / 11</div>
 
     <div class="slides-container">
         <div class="slide cover active" id="slide-0">
@@ -309,7 +339,7 @@
                             El 85% de los estudiantes quiere ser más sostenible pero no sabe por dónde empezar.
                         </div>
                         <p id="s1-src" style="margin-top: 25px; font-size: 14px; opacity: 0.6;">
-                            Impulso Sostenible (2025)
+                            Fuente: Impulso Sostenible (2025)
                         </p>
                     </div>
                 </div>
@@ -321,20 +351,20 @@
                 <h2 class="slide-title" id="s2-t">La <span>Voz</span> del Estudiante</h2>
                 <div class="grid-2" style="grid-template-columns: 1fr 1fr;">
                     <div class="stat-card" style="background: var(--gradient); color: var(--secondary);">
-                        <div class="value" style="color: var(--secondary);">1.075</div>
+                        <div class="value" style="color: var(--secondary);">1.075*</div>
                         <div id="s2-stat-l" class="label" style="color: var(--secondary); font-weight: 700;">Estudiantes encuestados</div>
                         <p id="s2-stat-p" style="font-size: 18px; margin-top: 15px;">Murcia, Almería, Málaga y Extremadura.</p>
                     </div>
                     <div>
-                        <ul class="impact-list" id="s2-list">
-                            <li><i class="fa-solid fa-circle-check"></i> Actitud pro-sostenible confirmada.</li>
-                            <li><i class="fa-solid fa-circle-xmark" style="color: #ff4d4d;"></i> Brecha teoría-práctica detectada.</li>
-                            <li><i class="fa-solid fa-bolt"></i> Mayor integración institucional demandada.</li>
+                        <ul class="impact-list" id="s2-list" style="font-size: 28px;">
+                            <li style="font-size: 28px;"><i class="fa-solid fa-circle-check"></i> Actitud pro-sostenible confirmada.</li>
+                            <li style="font-size: 28px;"><i class="fa-solid fa-circle-xmark" style="color: #ff4d4d;"></i> Brecha teoría-práctica detectada.</li>
+                            <li style="font-size: 28px;"><i class="fa-solid fa-bolt"></i> Mayor integración institucional demandada.</li>
                         </ul>
                     </div>
                 </div>
                 <div id="s2-footer" style="margin-top: 30px; font-size: 0.85em; color: #777; font-style: italic; border-top: 1px solid #eee; padding-top: 10px;">
-                    Albarracín Esparza, L., León Gómez, A., Gallardo Vázquez, D., Valls Martínez, M. D. C., & Soriano Román, R. Universidad y sostenibilidad: así lo ve el alumnado.
+                    *Albarracín Esparza, L., León Gómez, A., Gallardo Vázquez, D., Valls Martínez, M. D. C., & Soriano Román, R. Universidad y sostenibilidad: así lo ve el alumnado.
                 </div>
             </div>
         </div>
@@ -345,12 +375,15 @@
                 <div class="grid-2" style="grid-template-columns: 0.8fr 1.2fr;">
                     <div class="mockup-container" style="background: transparent; border: none; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                         <img src="Logo_app.png" alt="GreenLoop App" style="max-height: 100%; width: auto; filter: drop-shadow(0 0 20px rgba(0,255,136,0.3));">
-                        <p id="s3-app" style="margin-top: 20px; font-weight: 700; color: var(--primary); letter-spacing: 2px;">Acción · Impacto · Recompensa</p>
+                        <p id="s3-app" style="margin-top: 20px; font-weight: 700; color: var(--primary); letter-spacing: 2px;">Acción · Impacto · Recompensa · Datos Reales</p>
                     </div>
                     <div>
                         <h3 id="s3-h3" style="font-size: 48px; margin-bottom: 20px; color: var(--primary);">Mucho más que reciclar.</h3>
                         <p id="s3-p" style="font-size: 26px; line-height: 1.4; opacity: 0.9;">
-                            Una plataforma que centraliza la <strong>vida sostenible</strong> del campus: desde el reciclaje hasta el consumo local y la formación ambiental.
+                            Una plataforma que centraliza la <strong>vida sostenible</strong> del campus: desde el reciclaje hasta el comercio local.
+                        </p>
+                        <p id="s3-key" style="margin-top: 25px; font-size: 22px; color: var(--primary); border-left: 4px solid var(--primary); padding-left: 20px; font-style: italic;">
+                            GreenLoop transforma las acciones estudiantiles en datos de sostenibilidad en tiempo real para las instituciones.
                         </p>
                     </div>
                 </div>
@@ -360,32 +393,27 @@
         <div class="slide" id="slide-4">
             <div class="content">
                 <h2 class="slide-title" id="s4-t">Módulos <span>GreenLoop</span></h2>
-                
                 <div class="grid-5">
                     <div class="doa-tile">
                         <div class="icon"><i class="fa-solid fa-id-card"></i></div>
                         <h3 class="doa-h">Carné Sostenible</h3>
                         <p class="doa-p">Perfil personal con registro de acciones, nivel de impacto y badges por logros ambientales.</p>
                     </div>
-
                     <div class="doa-tile">
                         <div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
                         <h3 class="doa-h">Eco-Actividades</h3>
                         <p class="doa-p">Calendario de talleres y charlas. Registro por QR que otorga eco-créditos instantáneos.</p>
                     </div>
-
                     <div class="doa-tile">
                         <div class="icon"><i class="fa-solid fa-map-location-dot"></i></div>
                         <h3 class="doa-h">Mapa 360</h3>
                         <p class="doa-p">Guía de comercios locales, tiendas a granel y puntos de economía circular en la ciudad.</p>
                     </div>
-
                     <div class="doa-tile">
                         <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
                         <h3 class="doa-h">Tips Sostenibles</h3>
                         <p class="doa-p">Pequeñas ideas, gran impacto. Aprende hábitos diarios con datos reales sobre el ahorro.</p>
                     </div>
-
                     <div class="doa-tile">
                         <div class="icon"><i class="fa-solid fa-users-gear"></i></div>
                         <h3 class="doa-h">Comunidad</h3>
@@ -400,16 +428,16 @@
                 <h2 class="slide-title" id="s5-t">Impacto <span>Institucional</span></h2>
                 <div class="grid-2">
                     <div>
-                        <ul class="impact-list" id="s5-list">
-                            <li><i class="fa-solid fa-check-double"></i> Cumplimiento ODS 12 y 13.</li>
-                            <li><i class="fa-solid fa-chart-line"></i> Datos reales de reciclaje.</li>
-                            <li><i class="fa-solid fa-piggy-bank"></i> Optimización de costes.</li>
-                            <li><i class="fa-solid fa-users"></i> Participación de la comunidad universitaria.</li>
+                        <ul class="impact-list" id="s5-list" style="font-size: 28px;">
+                            <li style="font-size: 28px;"><i class="fa-solid fa-check-double"></i> Cumplimiento ODS 12 y 13.</li>
+                            <li style="font-size: 28px;"><i class="fa-solid fa-chart-line"></i> Datos reales de reciclaje.</li>
+                            <li style="font-size: 28px;"><i class="fa-solid fa-piggy-bank"></i> Optimización de costes.</li>
+                            <li style="font-size: 28px;"><i class="fa-solid fa-users"></i> Participación de la comunidad universitaria.</li>
                         </ul>
                     </div>
-                    <div style="background: #f1f5f9; padding: 60px; border-radius: 32px; border-left: 8px solid var(--primary);">
-                        <h3 id="s5-box-t" style="color: var(--secondary); margin-bottom: 25px; font-size: 38px;">Economía Circular</h3>
-                        <p id="s5-box-p" style="font-size: 24px; line-height: 1.5; color: #334155;">El valor del residuo vuelve al estudiante y al comercio local, creando un ciclo de riqueza sostenible.</p>
+                    <div style="background: #f1f5f9; padding: 40px; border-radius: 32px; border-left: 8px solid var(--primary);">
+                        <h3 id="s5-box-t" style="color: var(--secondary); margin-bottom: 20px; font-size: 38px;">Medición de Impacto</h3>
+                        <p id="s5-box-p" style="font-size: 26px; line-height: 1.5; color: #334155;">Permite a las universidades rastrear, informar y mejorar el desempeño en sostenibilidad (ODS 12 y 13).</p>
                     </div>
                 </div>
             </div>
@@ -419,40 +447,88 @@
             <div class="content">
                 <h2 class="slide-title" id="s6-t">Nuestra ventaja <span>competitiva</span></h2>
                 <table class="comp-table" id="s6-table">
-                    <tr>
+                    <tr class="row-green-desc">
                         <td id="s6-r1-c1">Acciones puntuales</td>
                         <td id="s6-r1-c2">Difícil de medir y sin incentivos claros.</td>
                     </tr>
-                    <tr>
+                    <tr class="row-green-desc">
                         <td id="s6-r2-c1">Campañas Temporales</td>
                         <td id="s6-r2-c2">Impacto temporal (sin generar hábitos a largo plazo).</td>
                     </tr>
-                    <tr>
-                        <td id="s6-r3-c1" style="color: var(--secondary);">GreenLoop</td>
-                        <td id="s6-r3-c2">Participación activa, impacto medible y comunidad sostenible.</td>
+                    <tr class="row-greenloop">
+                        <td id="s6-r3-c1">GreenLoop</td>
+                        <td id="s6-r3-c2">Participación activa, impacto medible y generación de datos ESG para instituciones.</td>
                     </tr>
                 </table>
             </div>
         </div>
 
-        <div class="slide cover" id="slide-7" style="background: var(--gradient);">
+        <div class="slide" id="slide-7">
+            <div class="content">
+                <h2 class="slide-title" id="s7-t">Modelo de Negocio e <span>Ingresos</span></h2>
+                <div class="grid-2" style="grid-template-columns: 1.2fr 0.8fr;">
+                    <div>
+                        <h3 id="s7-h3" style="font-size: 28px; margin-bottom: 25px; color: var(--secondary);">Cómo genera ingresos GreenLoop:</h3>
+                        <ul class="impact-list" id="s7-list">
+                            <li><i class="fa-solid fa-server"></i> <span id="s7-l1">Modelo SaaS B2B: Las universidades pagan por acceso a paneles de control y herramientas de reporte.</span></li>
+                            <li><i class="fa-solid fa-id-badge"></i> <span id="s7-l2">Licencias por suscripción (planes anuales).</span></li>
+                            <li><i class="fa-solid fa-magnifying-glass-chart"></i> <span id="s7-l3">Análisis de datos alineados con métricas ODS y ESG.</span></li>
+                            <li><i class="fa-solid fa-store"></i> <span id="s7-l4">Alianzas opcionales con comercios locales para el ecosistema de recompensas.</span></li>
+                        </ul>
+                    </div>
+                    <div style="background: #f1f5f9; padding: 40px; border-radius: 32px; text-align: center;">
+                        <i class="fa-solid fa-chart-line" style="font-size: 80px; color: var(--primary); margin-bottom: 20px;"></i>
+                        <p id="s7-box-p" style="font-weight: 700; color: var(--secondary); font-size: 20px;">Solución escalable y de alto valor institucional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-8">
+            <div class="content">
+                <h2 class="slide-title" id="s8-new-t">Escalabilidad & <span>Futuro</span></h2>
+                <div class="grid-2">
+                    <div>
+                        <h3 id="s8-h3-1" style="color: var(--secondary); margin-bottom: 15px; font-size: 32px;">Escalabilidad:</h3>
+                        <ul class="impact-list" id="s8-list-1" style="font-size: 22px; margin-bottom: 30px;">
+                            <li style="font-size: 22px;"><i class="fa-solid fa-check"></i> Modelo SaaS escalable y replicable en cualquier universidad.</li>
+                            <li style="font-size: 22px;"><i class="fa-solid fa-check"></i> Sin infraestructura física. Alto margen y rápida implementación.</li>
+                        </ul>
+                        <h3 id="s8-h3-2" style="color: var(--secondary); margin-bottom: 15px; font-size: 32px;">Expansión:</h3>
+                        <ul class="impact-list" id="s8-list-2" style="font-size: 22px;">
+                            <li style="font-size: 22px;"><i class="fa-solid fa-rocket"></i> Universidades → Empresas → Smart Cities.</li>
+                            <li style="font-size: 22px;"><i class="fa-solid fa-rocket"></i> <strong id="s8-strong">GreenLoop se convierte en estándar de datos ESG institucional.</strong></li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--secondary); color: white; padding: 40px; border-radius: 32px;">
+                        <h3 id="s8-roadmap-t" style="color: var(--primary); margin-bottom: 25px; font-size: 36px;">Roadmap:</h3>
+                        <p id="s8-r1" style="font-size: 24px; margin-bottom: 15px;"><strong>2026:</strong> Piloto en universidades (validación del modelo)</p>
+                        <p id="s8-r2" style="font-size: 24px; margin-bottom: 15px;"><strong>2027:</strong> Expansión nacional (adquisición de clientes B2B)</p>
+                        <p id="s8-r3" style="font-size: 24px;"><strong>2028:</strong> Internacionalización (escalado del SaaS)</p>
+                    </div>
+                </div>
+                <p id="s8-footer" style="margin-top: 30px; font-size: 16px; color: #64748b; font-style: italic;">GreenLoop es una solución escalable con impacto global.</p>
+            </div>
+        </div>
+
+        <div class="slide cover" id="slide-9" style="background: var(--gradient);">
             <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
                 <i class="fa-solid fa-leaf" style="font-size: 80px; color: var(--secondary);"></i>
                 <h2 style="font-size: 80px; color: var(--secondary); letter-spacing: -4px; margin: 0;">GreenLoop</h2>
             </div>
-            <p id="s7-p" style="color: var(--secondary); font-weight: 700; margin-top: 10px;">Haciendo la sostenibilidad<br>irresistible para el estudiante.</p>
-            <div id="s7-thanks" style="margin-top: 40px; color: var(--secondary); font-size: 24px; font-weight: 700;">
+            <p id="s9-p-text" style="color: var(--secondary); font-weight: 700; margin-top: 10px; font-size: 32px;">Haciendo la sostenibilidad irresistible para el estudiante <br>y medible para las instituciones.</p>
+            <div id="s9-thanks" style="margin-top: 40px; color: var(--secondary); font-size: 24px; font-weight: 700;">
                 GRACIAS POR SU ATENCIÓN
             </div>
         </div>
 
-        <div class="slide" id="slide-8" style="background: #f8fafc; align-items: center; justify-content: center;">
+        <div class="slide" id="slide-10" style="background: #f8fafc; align-items: center; justify-content: center;">
             <div class="content" style="text-align: center; align-items: center;">
-                <h2 class="slide-title" id="s8-t">¡Únete a la <span>Revolución</span>!</h2>
+                <h2 class="slide-title" id="s10-t">¡Únete a la <span>Revolución</span>!</h2>
                 <div style="background: white; padding: 30px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 2px solid var(--primary);">
                     <img src="qr_code.png" alt="App QR Code" style="width: 350px; height: 350px; display: block;">
                 </div>
-                <p id="s8-p" style="margin-top: 30px; font-size: 24px; color: var(--secondary); font-weight: 600;">Escanea para ver la App</p>
+                <p id="s10-p" style="margin-top: 30px; font-size: 24px; color: var(--secondary); font-weight: 600;">Escanea para ver la App</p>
             </div>
         </div>
 
@@ -494,17 +570,18 @@
                     '<li><i class="fa-solid fa-bolt"></i> Mayor integración institucional demandada.</li>'
                 ],
                 s3_t: "Ecosistema <span>Digital</span>",
-                s3_app: "Acción · Impacto · Recompensa",
+                s3_app: "Acción · Impacto · Recompensa · Datos Reales",
                 s3_h3: "Mucho más que reciclar.",
                 s3_p: "Una plataforma que centraliza la <strong>vida sostenible</strong> del campus: desde el reciclaje hasta el comercio local.",
+                s3_key: "GreenLoop transforma las acciones estudiantiles en datos de sostenibilidad en tiempo real para las instituciones.",
                 s4_t: "Módulos <span>GreenLoop</span>",
                 doa_h: ["Carné Sostenible", "Eco-Actividades", "Mapa 360", "Tips Sostenibles", "Comunidad"],
                 doa_p: [
-                    "Perfil con impacto real y logros ambientales.", 
-                    "Talleres y charlas con check-in QR.", 
-                    "Guía de comercio local y puntos circulares.", 
-                    "Pequeñas ideas, gran impacto con datos reales.",
-                    "Car-sharing, marketplace y apoyo estudiantil."
+                    "Perfil personal con registro de acciones, nivel de impacto y badges por logros ambientales.", 
+                    "Calendario de talleres y charlas. Registro por QR que otorga eco-créditos instantáneos.", 
+                    "Guía de comercios locales, tiendas a granel y puntos de economía circular en la ciudad.", 
+                    "Pequeñas ideas, gran impacto. Aprende hábitos diarios con datos reales sobre el ahorro.",
+                    "Espacio colaborativo: car-sharing, marketplace de intercambio y red de apoyo estudiantil."
                 ],
                 s5_t: "Impacto <span>Institucional</span>",
                 s5_list: [
@@ -513,14 +590,34 @@
                     '<li><i class="fa-solid fa-piggy-bank"></i> Optimización de costes.</li>',
                     '<li><i class="fa-solid fa-users"></i> Participación de la comunidad universitaria.</li>'
                 ],
-                s5_box_t: "Economía Circular",
-                s5_box_p: "El valor del residuo vuelve al estudiante y al comercio local, creando un ciclo de riqueza sostenible.",
+                s5_box_t: "Medición de Impacto",
+                s5_box_p: "Permite a las universidades rastrear, informar y mejorar el desempeño en sostenibilidad (ODS 12 y 13).",
                 s6_t: "Nuestra ventaja <span>competitiva</span>",
-                s6_rows: ["Acciones Aisladas", "Difíciles de medir y sin recompensa tangible.", "Campañas Temporales", "Efecto efímero (Falta de hábito a largo plazo).", "GreenLoop", "Participación activa, impacto medible y conexión local."],
-                s7_p: "Haciendo la sostenibilidad<br>irresistible para el estudiante.",
-                s7_thanks: "GRACIAS POR SU ATENCIÓN",
-                s8_t: "¡Únete a la <span>Revolución</span>!",
-                s8_p: "Escanea para ver la App"
+                s6_rows: ["Acciones puntuales", "Difícil de medir y sin incentivos claros.", "Campañas Temporales", "Impacto temporal (sin generar hábitos a largo plazo).", "GreenLoop", "Participación activa, impacto medible y generación de datos ESG para instituciones."],
+                s7_t: "Modelo de Negocio e <span>Ingresos</span>",
+                s7_h3: "Cómo genera ingresos GreenLoop:",
+                s7_list: ["Modelo SaaS B2B: Las universidades pagan por acceso a paneles de control.", "Licencias por suscripción (planes anuales).", "Análisis de datos alineados con métricas ODS y ESG.", "Alianzas opcionales con comercios locales."],
+                s7_box_p: "Solución escalable y de alto valor institucional.",
+                s8_new_t: "Escalabilidad & <span>Futuro</span>",
+                s8_h3_1: "Escalabilidad:",
+                s8_list_1: [
+                    '<li><i class="fa-solid fa-check"></i> Modelo SaaS escalable y replicable en cualquier universidad.</li>',
+                    '<li><i class="fa-solid fa-check"></i> Sin infraestructura física. Alto margen y rápida implementación.</li>'
+                ],
+                s8_h3_2: "Expansión:",
+                s8_list_2: [
+                    '<li><i class="fa-solid fa-rocket"></i> Universidades → Empresas → Smart Cities.</li>',
+                    '<li><i class="fa-solid fa-rocket"></i> <strong id="s8-strong">GreenLoop se convierte en estándar de datos ESG institucional.</strong></li>'
+                ],
+                s8_roadmap_t: "Roadmap:",
+                s8_r1: "<strong>2026:</strong> Piloto en universidades (validación del modelo)",
+                s8_r2: "<strong>2027:</strong> Expansión nacional (adquisición de clientes B2B)",
+                s8_r3: "<strong>2028:</strong> Internacionalización (escalado del SaaS)",
+                s8_footer: "GreenLoop es una solución escalable con impacto global.",
+                s9_p: "Haciendo la sostenibilidad irresistible para el estudiante <br>y medible para las instituciones.",
+                s9_thanks: "GRACIAS POR SU ATENCIÓN",
+                s10_t: "¡Únete a la <span>Revolución</span>!",
+                s10_p: "Escanea para ver la App"
             },
             EN: {
                 btn: "ES",
@@ -540,17 +637,18 @@
                     '<li><i class="fa-solid fa-bolt"></i> Greater institutional integration demanded.</li>'
                 ],
                 s3_t: "Digital <span>Ecosystem</span>",
-                s3_app: "Action · Impact · Reward",
+                s3_app: "Action · Impact · Reward · Real Data",
                 s3_h3: "More than just recycling.",
                 s3_p: "A platform that centralizes <strong>sustainable life</strong> on campus: from recycling to local commerce.",
+                s3_key: "GreenLoop transforms student actions into real-time sustainability data for institutions.",
                 s4_t: "<span>GreenLoop</span> Modules",
-                doa_h: ["Sust. ID Card", "Eco-Activities", "360 Map", "Sustainable Tips", "Community"],
+                doa_h: ["Sustainable ID Card", "Eco-Activities", "360 Map", "Sustainable Tips", "Community"],
                 doa_p: [
-                    "Profile with real impact and green badges.", 
-                    "Workshops and talks with QR check-in.", 
-                    "Local commerce and circular economy guide.", 
-                    "Small ideas, big impact with real-world data.",
-                    "Car-sharing, marketplace and student support."
+                    "Personal profile with record of actions, impact level and badges for environmental achievements.", 
+                    "Calendar of workshops and talks. QR registration that grants instant eco-credits.", 
+                    "Guide to local businesses, bulk stores and circular economy points in the city.", 
+                    "Small ideas, big impact. Learn daily habits with real data on savings.",
+                    "Collaborative space: car-sharing, exchange marketplace and student support network."
                 ],
                 s5_t: "Institutional <span>Impact</span>",
                 s5_list: [
@@ -559,60 +657,74 @@
                     '<li><i class="fa-solid fa-piggy-bank"></i> Cost optimization.</li>',
                     '<li><i class="fa-solid fa-users"></i> University community engagement.</li>'
                 ],
-                s5_box_t: "Circular Economy",
-                s5_box_p: "Waste value returns to the student and local businesses, creating a sustainable wealth cycle.",
+                s5_box_t: "Data-Driven Performance",
+                s5_box_p: "Enables universities to track, report and improve sustainability performance (SDG 12 & 13).",
                 s6_t: "Our competitive <span>advantage</span>",
-                s6_rows: ["Isolated Actions", "Hard to measure and no tangible rewards.", "Temporary Campaigns", "Short-lived effect (Lack of long-term habit).", "GreenLoop", "Active participation, measurable impact, and local connection."],
-                s7_p: "Making sustainability<br>irresistible for students.",
-                s7_thanks: "THANK YOU FOR YOUR ATTENTION",
-                s8_t: "Join the <span>Revolution</span>!",
-                s8_p: "Scan to see the App"
+                s6_rows: ["One-off Actions", "Hard to measure and lack of clear incentives.", "Temporary Campaigns", "Temporal impact (does not generate long-term habits).", "GreenLoop", "Active participation, measurable impact and ESG data for institutions."],
+                s7_t: "Business Model & <span>Revenue</span>",
+                s7_h3: "How GreenLoop makes money:",
+                s7_list: ["B2B SaaS model: Universities pay for dashboard access.", "Subscription-based licenses (annual plans).", "Data insights aligned with SDGs and ESG metrics.", "Optional partnerships with local businesses."],
+                s7_box_p: "Scalable solution with high institutional value.",
+                s8_new_t: "Scalability & <span>Future</span>",
+                s8_h3_1: "Scalability:",
+                s8_list_1: [
+                    '<li><i class="fa-solid fa-check"></i> Scalable SaaS model replicable in any university.</li>',
+                    '<li><i class="fa-solid fa-check"></i> No physical infrastructure. High margin and fast implementation.</li>'
+                ],
+                s8_h3_2: "Expansion:",
+                s8_list_2: [
+                    '<li><i class="fa-solid fa-rocket"></i> Universities → Companies → Smart Cities.</li>',
+                    '<li><i class="fa-solid fa-rocket"></i> <strong id="s8-strong">GreenLoop becomes the standard for institutional ESG data.</strong></li>'
+                ],
+                s8_roadmap_t: "Roadmap:",
+                s8_r1: "<strong>2026:</strong> University pilot (model validation)",
+                s8_r2: "<strong>2027:</strong> National expansion (B2B client acquisition)",
+                s8_r3: "<strong>2028:</strong> Internationalization (SaaS scaling)",
+                s8_footer: "GreenLoop is a scalable solution with global impact.",
+                s9_p: "Making sustainability irresistible for students <br>and measurable for institutions.",
+                s9_thanks: "THANK YOU FOR YOUR ATTENTION",
+                s10_t: "Join the <span>Revolution</span>!",
+                s10_p: "Scan to see the App"
             }
         };
 
         function toggleLanguage() {
-            currentSlide = 0;
             currentLang = currentLang === 'ES' ? 'EN' : 'ES';
             const t = translations[currentLang];
             langBtn.innerText = t.btn;
 
-            // Update Slide 0
+            // Page 0
             document.getElementById('s0-st').innerText = t.s0_st;
             document.getElementById('s0-b').innerText = t.s0_b;
-            
-            // Update Slide 1
+            // Page 1
             document.getElementById('s1-t').innerHTML = t.s1_t;
             document.getElementById('s1-p1').innerHTML = t.s1_p1;
             document.getElementById('s1-p2').innerHTML = t.s1_p2;
             document.getElementById('s1-stat').innerText = t.s1_stat;
             document.getElementById('s1-src').innerText = t.s1_src;
-
-            // Update Slide 2
+            // Page 2
             document.getElementById('s2-t').innerHTML = t.s2_t;
             document.getElementById('s2-stat-l').innerText = t.s2_stat_l;
             document.getElementById('s2-stat-p').innerText = t.s2_stat_p;
             document.getElementById('s2-list').innerHTML = t.s2_list.join('');
-
-            // Update Slide 3
+            // Page 3
             document.getElementById('s3-t').innerHTML = t.s3_t;
             document.getElementById('s3-app').innerText = t.s3_app;
             document.getElementById('s3-h3').innerText = t.s3_h3;
             document.getElementById('s3-p').innerHTML = t.s3_p;
-
-            // Update Slide 4
+            document.getElementById('s3-key').innerText = t.s3_key;
+            // Page 4
             document.getElementById('s4-t').innerHTML = t.s4_t;
             const dH = document.querySelectorAll('.doa-h');
             const dP = document.querySelectorAll('.doa-p');
             dH.forEach((el, i) => el.innerText = t.doa_h[i]);
             dP.forEach((el, i) => el.innerText = t.doa_p[i]);
-
-            // Update Slide 5
+            // Page 5
             document.getElementById('s5-t').innerHTML = t.s5_t;
             document.getElementById('s5-list').innerHTML = t.s5_list.join('');
             document.getElementById('s5-box-t').innerText = t.s5_box_t;
             document.getElementById('s5-box-p').innerText = t.s5_box_p;
-
-            // Update Slide 6
+            // Page 6
             document.getElementById('s6-t').innerHTML = t.s6_t;
             document.getElementById('s6-r1-c1').innerText = t.s6_rows[0];
             document.getElementById('s6-r1-c2').innerText = t.s6_rows[1];
@@ -620,13 +732,34 @@
             document.getElementById('s6-r2-c2').innerText = t.s6_rows[3];
             document.getElementById('s6-r3-c1').innerText = t.s6_rows[4];
             document.getElementById('s6-r3-c2').innerText = t.s6_rows[5];
+            // Page 7
+            document.getElementById('s7-t').innerHTML = t.s7_t;
+            document.getElementById('s7-h3').innerText = t.s7_h3;
+            document.getElementById('s7-l1').innerText = t.s7_list[0];
+            document.getElementById('s7-l2').innerText = t.s7_list[1];
+            document.getElementById('s7-l3').innerText = t.s7_list[2];
+            document.getElementById('s7-l4').innerText = t.s7_list[3];
+            document.getElementById('s7-box-p').innerText = t.s7_box_p;
+            // Page 8
+            document.getElementById('s8-new-t').innerHTML = t.s8_new_t;
+            document.getElementById('s8-h3-1').innerText = t.s8_h3_1;
+            document.getElementById('s8-list-1').innerHTML = t.s8_list_1.join('');
+            document.getElementById('s8-h3-2').innerText = t.s8_h3_2;
+            document.getElementById('s8-list-2').innerHTML = t.s8_list_2.join('');
+            document.getElementById('s8-roadmap-t').innerText = t.s8_roadmap_t;
+            document.getElementById('s8-r1').innerHTML = t.s8_r1;
+            document.getElementById('s8-r2').innerHTML = t.s8_r2;
+            document.getElementById('s8-r3').innerHTML = t.s8_r3;
+            document.getElementById('s8-footer').innerText = t.s8_footer;
+            // Page 9
+            document.getElementById('s9-p-text').innerHTML = t.s9_p;
+            document.getElementById('s9-thanks').innerText = t.s9_thanks;
+            // Page 10
+            document.getElementById('s10-t').innerHTML = t.s10_t;
+            document.getElementById('s10-p').innerText = t.s10_p;
 
-            // Update Slides 7 & 8
-            document.getElementById('s7-p').innerHTML = t.s7_p;
-            document.getElementById('s7-thanks').innerText = t.s7_thanks;
-            document.getElementById('s8-t').innerHTML = t.s8_t;
-            document.getElementById('s8-p').innerText = t.s8_p;
-
+            // Go to page 1 (Index 0)
+            currentSlide = 0;
             updateSlide();
         }
 
